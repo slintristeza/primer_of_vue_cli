@@ -5,13 +5,14 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  store: {
-    counst: 0
+  state: {
+    count: 0
   },
   mutations: {
     increment (state) {
       state.count++
-    }
+    },
+    decrement: state => [ state.count-- ]
   }
 })
 export default store

@@ -12,6 +12,13 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  created () {
+    console.log(this.$store.state.count)
+    this.$store.commit('increment')
+    console.log(this.$store.state.count)
+    this.$store.commit('decrement')
+    console.log(this.$store.state.count)
   }
 }
 </script>
