@@ -20,6 +20,9 @@ const store = new Vuex.Store({
     decrement: state => [state.count--],
     mutationType (state, payload) {
       state.count = payload
+    },
+    mutationList (state, { id, name, price }) {
+      state.list.push({ id, name, price })
     }
   },
   getters: {

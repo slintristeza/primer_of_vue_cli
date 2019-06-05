@@ -12,11 +12,26 @@
       <li>{{ nameA }}</li>
       <li>{{ nameB(1) }}</li>
     </ol>
+    <button @click="incrementValue">インクリメント</button>
+    <button @click="changeArrayValue">配列の値変更</button>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld'
+import Vue from 'vue'
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  actions: {
+    actionType ({ commit }, payload) {
+      commit('mutationType')
+    }
+  }
+})
+
+store.dispatch('mutationType', 1)
 
 export default {
   name: 'App',
@@ -39,6 +54,14 @@ export default {
     itemB () { return this.$store.getters.item }, // bad
     nameA () { return this.$store.getters.name(1) }, // good
     nameB () { return this.$store.getters.name } // bad
+  },
+  methods: {
+    changeArrayValue () {
+      this.$store.commit('mutationList', { id: 4, name: 'おれんじ', price: 400 })
+    },
+    incrementValue () {
+      this.$store.commit('increment')
+    }
   }
 }
 </script>
