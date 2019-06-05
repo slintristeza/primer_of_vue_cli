@@ -40,6 +40,14 @@ const store = new Vuex.Store({
     name (state, getters) {
       return id => getters.item(id).name
     }
+  },
+  actions: {
+    reset ({ commit }, payload) {
+      commit('mutationType', payload)
+    },
+    increment ({ commit }) {
+      commit('increment')
+    }
   }
 })
 export default store
