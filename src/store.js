@@ -11,7 +11,8 @@ const store = new Vuex.Store({
       { id: 1, name: 'りんご', price: 100 },
       { id: 2, name: 'ばなな', price: 200 },
       { id: 3, name: 'いちご', price: 300 }
-    ]
+    ],
+    message: '初期メッセージ'
   },
   mutations: {
     increment (state) {
@@ -23,6 +24,9 @@ const store = new Vuex.Store({
     },
     mutationList (state, { id, name, price }) {
       state.list.push({ id, name, price })
+    },
+    setMessage (state, payload) {
+      state.message = payload.message
     }
   },
   getters: {
@@ -39,6 +43,9 @@ const store = new Vuex.Store({
     },
     name (state, getters) {
       return id => getters.item(id).name
+    },
+    message (state) {
+      return state.message
     }
   },
   actions: {
@@ -47,6 +54,9 @@ const store = new Vuex.Store({
     },
     increment ({ commit }) {
       commit('increment')
+    },
+    doUpdate ({ commit }, message) {
+      commit('setMessage', { message })
     }
   }
 })

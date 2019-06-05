@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div id="section43">
+    <h1>Section 43</h1>
     <h3>引数なし</h3>
     <ol>
       <li>{{ count }}</li>
@@ -22,7 +23,7 @@
 <script>
 
 export default {
-  name: 'section43',
+  name: 'Section43',
   created () {
     console.log(this.$store.state.count)
     this.$store.commit('increment')
