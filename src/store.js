@@ -1,10 +1,19 @@
 import 'babel-polyfill'
 import Vue from 'vue'
 import Vuex from 'vuex'
+import moduleA from '@/store/moduleA'
+import moduleB from '@/store/moduleB'
+import axiosModule from '@/store/axiosModule'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+  modules: {
+    moduleA,
+    moduleB,
+    axiosModuleA: axiosModule,
+    axiosModuleB: axiosModule
+  },
   state: {
     count: 0,
     list: [
