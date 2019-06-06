@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import Home from '@/views/Home'
 import Product from '@/views/Product'
+import Button from '@/views/Button'
 
 Vue.use(VueRouter)
 
@@ -10,7 +11,8 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: Home },
-    { path: '/Product', component: Product }
+    { name: 'product', path: '/Product/:id', component: Product },
+    { name: 'button', path: '/Button', component: Button }
   ]
 })
 

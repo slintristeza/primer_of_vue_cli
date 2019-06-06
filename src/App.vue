@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Home</router-link>
+      <router-link to="/" exact>Home</router-link>
       <router-link to="/product">商品情報</router-link>
+      <router-link to="button" tag="button">ボタン</router-link>
     </nav>
     <router-view />
   </div>
@@ -20,3 +21,23 @@ export default {
   }
 }
 </script>
+
+<style>
+/* ナビゲーション */
+nav {
+    display: flex;
+    align-items: center;
+    background: #222;
+}
+nav a {
+    display: block;
+    padding: 0.5em;
+    color: #eee;
+    line-height: 1em;
+    text-decoration: none;
+}
+/* アクティブなリンク */
+.router-link-active {
+    background: palevioletred;
+}
+</style>
