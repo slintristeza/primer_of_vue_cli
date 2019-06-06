@@ -1,6 +1,7 @@
 import 'babel-polyfill'
 import Vue from 'vue'
 import Vuex from 'vuex'
+import product from '@/store/product'
 import moduleA from '@/store/moduleA'
 import moduleB from '@/store/moduleB'
 import axiosModule from '@/store/axiosModule'
@@ -13,7 +14,8 @@ const store = new Vuex.Store({
     moduleA,
     moduleB,
     axiosModuleA: axiosModule,
-    axiosModuleB: axiosModule
+    axiosModuleB: axiosModule,
+    product
   },
   state: {
     count: 0,
