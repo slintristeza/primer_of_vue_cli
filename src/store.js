@@ -8,6 +8,7 @@ import axiosModule from '@/store/axiosModule'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+  strict: process.env.NODE_ENV !== 'production',
   modules: {
     moduleA,
     moduleB,
@@ -69,4 +70,39 @@ const store = new Vuex.Store({
     }
   }
 })
+
+// eslint-disable-next-line no-unused-vars
+const unwatch = store.watch(
+  (state, getters) => {
+    return state.count // 監視したいデータを返す
+  },
+  (newVal, oldVal) => {
+    // 処理
+  }
+)
+// コミットにフック
+store.subscribe((mutation, state) => {
+  console.log(mutation.type)
+  console.log(mutation.payload)
+})
+
+// ディスパッチにフック
+store.subscribeAction((action, state) => {
+  console.log(action.type)
+  console.log(action.payload)
+})
+
+if (module.hot) {
+  module.hot.accept(['@/store/axiosModule.js'], () => {
+    // 更新されたモジュールの読み込み
+    const myModule = require('@/store/axiosModule.js').default
+    // 新しい定義をセット
+    store.hotUpdate({
+      modules: {
+        myModule: myModule
+      }
+    })
+  })
+}
+
 export default store
