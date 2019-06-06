@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <section43></section43>
-    <section44></section44>
+    <nav>
+      <router-link to="/">Home</router-link>
+      <router-link to="/product">商品情報</router-link>
+    </nav>
+    <router-view />
   </div>
 </template>
 

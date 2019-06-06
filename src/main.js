@@ -3,6 +3,7 @@ import App from './App'
 import 'babel-polyfill'
 import Vuex from 'vuex'
 import store from '@/store.js'
+import router from '@/router.js'
 const kitchenwareJson = require('./assets/kitchenware.json')
 const fruitsJson = require('./assets/fruits.json')
 
@@ -28,5 +29,6 @@ store.dispatch('axiosModuleB/load', kitchenwareJson)
 new Vue({
   el: '#app',
   store,
+  router,
   render: h => h(App)
 })
