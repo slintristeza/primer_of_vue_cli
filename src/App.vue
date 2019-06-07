@@ -19,6 +19,7 @@ export default {
   name: 'App',
   components: {
     HelloWorld,
+    // コンポーネントの非同期読み込みの書き方
     section43: () => import('@/components/Section43'),
     section44: () => import('@/components/Section44'),
     LoadingOverlay: () => import('@/components/LoadingOverlay')
