@@ -5,6 +5,7 @@ import product from '@/store/product'
 import moduleA from '@/store/moduleA'
 import moduleB from '@/store/moduleB'
 import axiosModule from '@/store/axiosModule'
+import view from '@/store/view'
 
 Vue.use(Vuex)
 
@@ -15,7 +16,8 @@ const store = new Vuex.Store({
     moduleB,
     axiosModuleA: axiosModule,
     axiosModuleB: axiosModule,
-    product
+    product,
+    view
   },
   state: {
     count: 0,

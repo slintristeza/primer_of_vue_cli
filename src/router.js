@@ -8,6 +8,7 @@ import ProductHome from '@/views/Product/Home'
 import ProductReview from '@/views/Product/Review'
 import ProductReviewDetail from '@/views/Product/ReviewDetail'
 import Button from '@/views/Button'
+import Store from '@/store.js'
 
 Vue.use(VueRouter)
 
@@ -19,7 +20,11 @@ const router = new VueRouter({
     },
     {
       path: '/Product',
-      component: ProductList
+      component: ProductList,
+      beforeEnter (to, from, next) {
+        console.log('product: beforeEnter')
+        next()
+      }
     },
     {
       path: '/Product/:id(\\d+)', // 数字のみIDにマッチ
@@ -51,4 +56,20 @@ const router = new VueRouter({
   ]
 })
 
+router.beforeEach((to, from, next) => {
+  console.log('global:beforeEach')
+  Store.commit('view/start')
+  next()
+})
+
+router.beforeResolve((to, from, next) => {
+  console.log('global:beforeResolve')
+  next()
+})
+
+router.afterEach((to, from) => {
+  console.log('global:afterEach')
+  Store.commit('view/end')
+  // すべてのルートに共通する処理
+})
 export default router

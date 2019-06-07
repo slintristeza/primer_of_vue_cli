@@ -5,7 +5,10 @@
       <router-link to="/product">商品情報</router-link>
       <router-link to="button" tag="button">ボタン</router-link>
     </nav>
-    <router-view />
+    <transition name="view">
+      <router-view />
+    </transition>
+    <LoadingOverlay />
   </div>
 </template>
 
@@ -17,7 +20,8 @@ export default {
   components: {
     HelloWorld,
     section43: () => import('@/components/Section43'),
-    section44: () => import('@/components/Section44')
+    section44: () => import('@/components/Section44'),
+    LoadingOverlay: () => import('@/components/LoadingOverlay')
   }
 }
 </script>
@@ -39,5 +43,15 @@ nav a {
 /* アクティブなリンク */
 .router-link-active {
     background: palevioletred;
+}
+
+.view-enter-active, .view-leave-active {
+  transition: opacity 0.5s;
+}
+.view-leave-active {
+  position: absolute;
+}
+.view-enter, .view-leave-to {
+  opacity: 0;
 }
 </style>
